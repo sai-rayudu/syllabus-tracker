@@ -7,7 +7,7 @@ import {useDispatch,useSelector} from "react-redux";
 import {useEffect} from "react";
 import {setCredentials} from "./features/auth/authSlice";
 import {apiRequest} from "./services/api";
-import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import ProtectedRoute from "./components/protectedRoute.jsx";
 
 function App(){
 
