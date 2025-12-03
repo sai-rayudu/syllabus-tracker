@@ -12,7 +12,8 @@ export const loginUser=createAsyncThunk(
 const initialState={
     user:null,
     token:null,
-    isLoggedIn:false
+    isLoggedIn:false,
+    authLoading:true
 };
 
 const authSlice=createSlice({
@@ -23,11 +24,13 @@ const authSlice=createSlice({
             state.user=action.payload.user;
             state.token=action.payload.token;
             state.isLoggedIn=true;
+            state.authLoading=false
         },
         logout:(state)=>{
             state.user=null;
             state.token=null;
             state.isLoggedIn=false;
+             state.authLoading=false;
             localStorage.removeItem("token")
         },
     },

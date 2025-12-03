@@ -16,12 +16,14 @@ function App(){
   useEffect(()=>{
     async function restoreUser(){
       const token=localStorage.getItem("token");
-      if(token && !isLoggedIn){
-        const data=await apiRequest("/me","GET");
-        if(data?._id){
-          dispatch(setCredentials({user:data,token}));
-        }
+      if(!token){
+        dispatch(setCredentials({ user: null, token: null }));
+      return;
       }
+        const data=await apiRequest("/me","GET");
+          dispatch(setCredentials({user:data,token}));
+        
+      
     }
     restoreUser();
   },[]);
